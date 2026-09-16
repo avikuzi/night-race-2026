@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מירוץ הלילה 2026 — דשבורד אימונים | אבי ושחר</title>
+  <meta name="description" content="דשבורד מעקב אימונים אינטראקטיבי למירוץ הלילה 15 ק&quot;מ בסגנון Apple Fitness.">
+
+  <!-- Fonts: Inter & SF Pro fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="index.css?v=1789574486">
+</head>
+<body>
+
+<div class="app-container">
+
+  <!-- ===== HEADER ===== -->
+  <header class="dashboard-header animate-in">
+    <div class="dashboard-header-top">
+      <div class="dashboard-title-group">
+        <span class="dashboard-eyebrow">ROAD TO 15KM NIGHT RACE · 28 OCT 2026</span>
+        <h1>מירוץ הלילה 2026</h1>
+        <p class="subtitle">דשבורד אימונים ומעקב ביצועים בזמן אמת · אבי ושחר</p>
+      </div>
+
+      <div class="sync-status-header">
+        <span class="last-sync-tag" id="last-sync-tag">עודכן: <strong id="last-sync-time" style="color:var(--text-primary)">—</strong></span>
+        <button class="sync-btn-header" onclick="triggerGarminSync()" id="sync-btn" title="סנכרן נתוני אימונים מ-Garmin Connect">
+          <span class="sync-icon">🔄</span> סנכרן מ-Garmin
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== SEGMENTED FILTER BAR ===== -->
+  <div class="filter-bar animate-in">
+    <div class="filter-btn-group">
+      <button class="filter-btn active" data-filter="both" id="filter-both">שניהם</button>
+      <button class="filter-btn" data-filter="avi" id="filter-avi">
+        <span class="dot-indicator dot-avi"></span> אבי
+      </button>
+      <button class="filter-btn" data-filter="shachar" id="filter-shachar">
+        <span class="dot-indicator dot-shachar"></span> שחר
+      </button>
+    </div>
+
+    <button class="filter-btn demo-btn" id="demo-toggle" onclick="toggleDemoMode()" title="הפעל מצב הדגמה עם נתונים לדוגמה">▶ מצב הדגמה</button>
+  </div>
+
+  <!-- ===== KPI SCORECARDS (APPLE FITNESS STYLE) ===== -->
+  <section class="kpi-grid">
+
+    <!-- Countdown -->
+    <div class="card-fitness animate-in" id="kpi-card-countdown">
+      <div class="kpi-header">
+        <span class="kpi-title">ימים למירוץ</span>
+        <span class="kpi-icon-badge">⏱️</span>
+      </div>
+      <div class="kpi-hero-number coral" id="kpi-countdown">—</div>
+      <div class="kpi-subtext" id="kpi-countdown-detail">28 באוקטובר 2026</div>
+    </div>
+
+    <!-- Completion Rate & Activity Rings -->
+    <div class="card-fitness kpi-rings-card animate-in" id="kpi-card-completion">
+      <div>
+        <div class="kpi-header">
+          <span class="kpi-title">אחוז השלמה</span>
+        </div>
+        <div id="completion-display"></div>
+        <div class="kpi-subtext" id="kpi-completion-detail" style="margin-top:6px">—</div>
+      </div>
+      <div class="rings-wrapper" id="activity-rings-container">
+        <!-- Dynamic SVG Activity Rings injected by app.js -->
+      </div>
+    </div>
+
+    <!-- Cumulative Distance (KM) -->
+    <div class="card-fitness animate-in" id="kpi-card-km">
+      <div class="kpi-header">
+        <span class="kpi-title">ק"מ מצטבר</span>
+        <span class="kpi-icon-badge">📏</span>
+      </div>
+      <div id="km-display"></div>
+      <div class="kpi-subtext" id="kpi-km-detail" style="margin-top:6px">—</div>
+    </div>
+
+    <!-- Workouts Completed Count -->
+    <div class="card-fitness animate-in" id="kpi-card-workouts">
+      <div class="kpi-header">
+        <span class="kpi-title">אימונים שבוצעו</span>
+        <span class="kpi-icon-badge">🎯</span>
+      </div>
+      <div id="workouts-count-display">
+        <div class="kpi-hero-number" id="kpi-workouts">—</div>
+      </div>
+      <div class="kpi-subtext" id="kpi-workouts-detail">—</div>
+    </div>
+
+  </section>
+
+  <!-- ===== HORIZONTAL MINIMALIST TIMELINE ===== -->
+  <section class="section-fitness animate-in" id="section-timeline">
+    <div class="section-title-wrap">
+      <h2 class="section-headline">ציר זמן והתקדמות שבועית</h2>
+      <span class="section-subhead">11 שבועות אימון · שלבי בסיס → בנייה → שיא → טייפר</span>
+    </div>
+
+    <div class="timeline-card">
+      <div class="timeline-track-wrap" id="timeline-track">
+        <div class="timeline-line-bg"></div>
+        <div class="timeline-line-progress" id="timeline-progress-bar"></div>
+        <div class="timeline-nodes-flex" id="timeline-nodes"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CHARTS (PACING & VOLUME) ===== -->
+  <div class="grid-2col">
+
+    <!-- Pacing Spline Chart -->
+    <section class="chart-card animate-in" id="section-pacing">
+      <div class="chart-header">
+        <div>
+          <h2 class="chart-title">קצב יעד מול ביצוע</h2>
+          <p class="chart-subtitle">אימוני איכות לאורך הבלוק (דק'/ק"מ)</p>
+        </div>
+      </div>
+      <div class="chart-container">
+        <canvas id="pacing-canvas"></canvas>
+      </div>
+    </section>
+
+    <!-- Volume Bar Chart -->
+    <section class="chart-card animate-in" id="section-volume">
+      <div class="chart-header">
+        <div>
+          <h2 class="chart-title">נפח שבועי מצטבר</h2>
+          <p class="chart-subtitle">סה"כ קילומטרים מתוכננים מול ביצוע בפועל</p>
+        </div>
+      </div>
+      <div class="chart-container">
+        <canvas id="volume-canvas"></canvas>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ===== STATUS TABLE (APPLE FITNESS LIST) ===== -->
+  <section class="table-card animate-in" id="section-table">
+    <div class="section-title-wrap" style="padding:0">
+      <div>
+        <h2 class="section-headline">יומן אימונים מפורט</h2>
+        <p class="section-subhead">לחצו על שורה לפירוט מקטעי האימון והנחיות ביצוע</p>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="status-table" id="status-table">
+        <thead id="status-table-head"></thead>
+        <tbody id="status-table-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>🌙 מירוץ הלילה של שחר ואבי · 15 ק"מ · 28 באוקטובר 2026</p>
+    <p style="margin-top:4px;color:var(--text-muted)">Apple Fitness Design Edition · v4.0</p>
+  </footer>
+
+</div>
+
+<!-- ===== WORKOUT DETAIL MODAL ===== -->
+<div class="modal-overlay" id="modal-overlay"></div>
+<div class="workout-modal" id="workout-modal">
+  <button class="modal-close-btn" id="modal-close">✕</button>
+  <div class="modal-body" id="modal-body"></div>
+</div>
+
+<!-- Scripts -->
+<script src="data.js?v=1789574486"></script>
+<script src="demo.js?v=1789574486"></script>
+<script src="app.js?v=1789574486"></script>
+</body>
+</html>

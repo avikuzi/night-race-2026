@@ -1,0 +1,19 @@
+# Garmin tokens (sensitive!)
+.garmin_tokens/
+*.tokens.json
+tokens/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+
+# Node & Build
+node_modules/
+.firebase/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini

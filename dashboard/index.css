@@ -1,0 +1,853 @@
+/* ============================================================
+   Apple Fitness Design System — index.css
+   Pure Black (#000000), Dark Gray (#1C1C1E), Neon Cyan (#00F0FF), Neon Green (#30D158)
+   ============================================================ */
+
+:root {
+  /* Colors — Apple Fitness Palette */
+  --bg-app: #000000;
+  --bg-card: #1C1C1E;
+  --bg-card-hover: #242426;
+  --bg-card-elevated: #2C2C2E;
+  --bg-pill: #2C2C2E;
+  --bg-pill-active: #3A3A3C;
+
+  /* Text Hierarchy */
+  --text-primary: #FFFFFF;
+  --text-secondary: #8E8E93;
+  --text-tertiary: #636366;
+  --text-muted: #48484A;
+
+  /* Neon User Accents */
+  --neon-avi: #00F0FF;          /* Electric Cyan */
+  --neon-avi-dim: rgba(0, 240, 255, 0.15);
+  --neon-avi-glow: rgba(0, 240, 255, 0.4);
+
+  --neon-shachar: #30D158;      /* Apple Fitness Green */
+  --neon-shachar-dim: rgba(48, 209, 88, 0.15);
+  --neon-shachar-glow: rgba(48, 209, 88, 0.4);
+
+  --neon-coral: #FF2D55;        /* Apple Fitness Red / Coral */
+  --neon-coral-dim: rgba(255, 45, 85, 0.15);
+  --neon-coral-glow: rgba(255, 45, 85, 0.4);
+
+  --neon-purple: #BF5AF2;       /* Apple System Purple */
+  --neon-purple-dim: rgba(191, 90, 242, 0.15);
+
+  --neon-yellow: #FFD60A;       /* Apple System Yellow */
+  --neon-yellow-dim: rgba(255, 214, 10, 0.15);
+
+  /* Borders & Shadows */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-pill: 9999px;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Heebo", sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, monospace;
+
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  direction: rtl;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-app);
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: var(--space-md) var(--space-md) var(--space-2xl);
+}
+
+/* App Container */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   Header (Apple Style)
+   ============================================================ */
+.dashboard-header {
+  padding: var(--space-lg) 0 var(--space-md);
+  margin-bottom: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+}
+
+.dashboard-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.dashboard-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-eyebrow {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--neon-coral);
+  margin-bottom: 2px;
+}
+
+.dashboard-header h1 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.dashboard-header .subtitle {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.sync-status-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--bg-card);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+}
+
+.last-sync-tag {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.sync-btn-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-pill);
+  border: none;
+  color: var(--neon-avi);
+  font-family: var(--font-family);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-smooth);
+}
+
+.sync-btn-header:hover {
+  background: var(--neon-avi-dim);
+  transform: scale(1.02);
+}
+
+.sync-btn-header.spinning .sync-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   Segmented Filter Bar (iOS Segmented Control)
+   ============================================================ */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.filter-btn-group {
+  display: inline-flex;
+  background: var(--bg-card);
+  padding: 4px;
+  border-radius: var(--radius-pill);
+  gap: 2px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-spring);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filter-btn:hover {
+  color: var(--text-primary);
+}
+
+.filter-btn.active {
+  background: var(--bg-pill-active);
+  color: var(--text-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.filter-btn#filter-avi.active {
+  color: var(--neon-avi);
+  background: var(--bg-pill-active);
+}
+
+.filter-btn#filter-shachar.active {
+  color: var(--neon-shachar);
+  background: var(--bg-pill-active);
+}
+
+.dot-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-avi {
+  background: var(--neon-avi);
+  box-shadow: 0 0 8px var(--neon-avi);
+}
+
+.dot-shachar {
+  background: var(--neon-shachar);
+  box-shadow: 0 0 8px var(--neon-shachar);
+}
+
+.demo-btn {
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  padding: 8px 14px;
+}
+
+.demo-btn.active {
+  color: var(--neon-yellow);
+  background: var(--neon-yellow-dim);
+}
+
+/* ============================================================
+   Card Layouts & Containers (Apple Fitness Cards)
+   ============================================================ */
+.card-fitness {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s var(--ease-smooth), background 0.2s var(--ease-smooth);
+}
+
+.card-fitness:hover {
+  background: var(--bg-card-hover);
+}
+
+/* KPI Scorecard Grid */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+@media (max-width: 1024px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.kpi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+}
+
+.kpi-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+}
+
+.kpi-icon-badge {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.kpi-hero-number {
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.kpi-hero-number.coral {
+  color: var(--neon-coral);
+  text-shadow: 0 0 20px var(--neon-coral-glow);
+}
+
+.kpi-hero-number.avi {
+  color: var(--neon-avi);
+  text-shadow: 0 0 20px var(--neon-avi-glow);
+}
+
+.kpi-hero-number.shachar {
+  color: var(--neon-shachar);
+  text-shadow: 0 0 20px var(--neon-shachar-glow);
+}
+
+.kpi-subtext {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* Ring & Metric Split Card */
+.kpi-rings-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.rings-wrapper {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+}
+
+.rings-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ring-bg {
+  fill: none;
+  stroke-width: 8;
+  opacity: 0.18;
+}
+
+.ring-progress {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s var(--ease-spring);
+}
+
+.ring-avi-bg { stroke: var(--neon-avi); }
+.ring-avi-fg { stroke: var(--neon-avi); filter: drop-shadow(0 0 4px var(--neon-avi)); }
+
+.ring-shachar-bg { stroke: var(--neon-shachar); }
+.ring-shachar-fg { stroke: var(--neon-shachar); filter: drop-shadow(0 0 4px var(--neon-shachar)); }
+
+/* Double Dual Metric Display */
+.metric-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metric-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.metric-val {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-family: var(--font-mono);
+}
+
+.metric-user-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   Minimalist Horizontal Timeline / Roadmap
+   ============================================================ */
+.section-fitness {
+  margin-bottom: var(--space-lg);
+}
+
+.section-title-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--space-md);
+  padding: 0 4px;
+}
+
+.section-headline {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.section-subhead {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.timeline-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-lg) var(--space-lg);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.timeline-track-wrap {
+  min-width: 760px;
+  position: relative;
+  padding: 24px 0 16px;
+}
+
+/* The continuous horizontal line */
+.timeline-line-bg {
+  position: absolute;
+  top: 36px;
+  left: 20px;
+  right: 20px;
+  height: 3px;
+  background: var(--bg-pill);
+  z-index: 1;
+  border-radius: 2px;
+}
+
+.timeline-line-progress {
+  position: absolute;
+  top: 36px;
+  right: 20px;
+  height: 3px;
+  background: linear-gradient(to left, var(--neon-avi), var(--neon-shachar));
+  z-index: 2;
+  border-radius: 2px;
+  transition: width 0.8s var(--ease-spring);
+}
+
+/* Week Node Container */
+.timeline-nodes-flex {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 3;
+}
+
+.timeline-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease-spring);
+}
+
+.timeline-node:hover {
+  transform: translateY(-2px);
+}
+
+/* Node Dot */
+.node-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 3px solid var(--text-tertiary);
+  margin-bottom: 12px;
+  transition: all 0.3s var(--ease-spring);
+  position: relative;
+}
+
+/* Past Node */
+.timeline-node.past .node-dot {
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* Current Week Node (Active / Pulsing) */
+.timeline-node.current .node-dot {
+  width: 22px;
+  height: 22px;
+  background: var(--neon-avi);
+  border: 4px solid #000000;
+  box-shadow: 0 0 0 3px var(--neon-avi), 0 0 20px var(--neon-avi-glow);
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.7), 0 0 20px var(--neon-avi-glow); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 240, 255, 0), 0 0 25px var(--neon-avi-glow); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0), 0 0 20px var(--neon-avi-glow); }
+}
+
+/* Race Day Node */
+.timeline-node.race .node-dot {
+  width: 20px;
+  height: 20px;
+  background: var(--neon-coral);
+  border: 3px solid #000000;
+  box-shadow: 0 0 12px var(--neon-coral-glow);
+}
+
+/* Node Labels */
+.node-week-num {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.timeline-node.current .node-week-num {
+  color: var(--neon-avi);
+  font-size: 0.95rem;
+}
+
+.node-dates {
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  direction: ltr;
+}
+
+.node-phase-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: var(--radius-pill);
+  margin-top: 6px;
+  text-transform: uppercase;
+  background: var(--bg-pill);
+  color: var(--text-secondary);
+}
+
+.node-phase-badge.base { color: var(--neon-avi); background: var(--neon-avi-dim); }
+.node-phase-badge.build { color: var(--neon-shachar); background: var(--neon-shachar-dim); }
+.node-phase-badge.peak { color: var(--neon-coral); background: var(--neon-coral-dim); }
+.node-phase-badge.taper { color: var(--neon-purple); background: var(--neon-purple-dim); }
+
+.node-milestone-km {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-top: 4px;
+}
+
+/* ============================================================
+   Charts Grid
+   ============================================================ */
+.grid-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+@media (max-width: 900px) {
+  .grid-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chart-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--space-md);
+}
+
+.chart-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.chart-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.chart-container {
+  position: relative;
+  height: 240px;
+  width: 100%;
+}
+
+/* ============================================================
+   Apple Fitness Status Table
+   ============================================================ */
+.table-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  overflow: hidden;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: var(--space-md);
+  scrollbar-width: thin;
+}
+
+.status-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+  font-size: 0.84rem;
+}
+
+.status-table thead th {
+  padding: 10px 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--bg-pill);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.status-table tbody tr {
+  background: var(--bg-app);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s var(--ease-smooth);
+  cursor: pointer;
+}
+
+.status-table tbody tr:hover {
+  background: var(--bg-card-elevated);
+  transform: scale(1.002);
+}
+
+.status-table tbody tr.past-week-row {
+  opacity: 0.55;
+}
+
+.status-table tbody tr.past-week-row:hover {
+  opacity: 0.95;
+}
+
+.status-table td {
+  padding: 12px;
+  white-space: nowrap;
+}
+
+.status-table td:first-child {
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.status-table td:last-child {
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+/* Week Separator */
+.status-table tr.week-start td {
+  border-top: 1px solid var(--bg-pill);
+}
+
+/* Workout Type Badge */
+.workout-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.workout-type.easy { background: rgba(48, 209, 88, 0.12); color: var(--neon-shachar); }
+.workout-type.volume { background: rgba(0, 240, 255, 0.12); color: var(--neon-avi); }
+.workout-type.quality { background: rgba(255, 45, 85, 0.12); color: var(--neon-coral); }
+.workout-type.race { background: linear-gradient(135deg, rgba(255,45,85,0.3), rgba(0,240,255,0.3)); color: #FFFFFF; font-weight: 900; }
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-badge.on-track { background: var(--neon-shachar-dim); color: var(--neon-shachar); }
+.status-badge.warning { background: var(--neon-yellow-dim); color: var(--neon-yellow); }
+.status-badge.off-track { background: var(--neon-coral-dim); color: var(--neon-coral); }
+.status-badge.skipped { background: rgba(255,255,255,0.06); color: var(--text-tertiary); }
+.status-badge.exempt { background: var(--neon-purple-dim); color: var(--neon-purple); }
+.status-badge.illness { background: var(--neon-coral-dim); color: var(--neon-coral); }
+.status-badge.pending { background: rgba(255,255,255,0.04); color: var(--text-muted); }
+
+.pace-cell {
+  font-family: var(--font-mono);
+  direction: ltr;
+  font-weight: 600;
+}
+
+.pace-cell.actual-good { color: var(--neon-shachar); font-weight: 700; }
+.pace-cell.actual-warning { color: var(--neon-yellow); }
+.pace-cell.actual-bad { color: var(--neon-coral); }
+
+.empty-cell {
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   Workout Modal (Apple Sheet Style)
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-smooth);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.workout-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  background: var(--bg-card);
+  border-radius: 28px;
+  width: 90%;
+  max-width: 520px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 32px 28px;
+  z-index: 1001;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s var(--ease-spring);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+.workout-modal.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--bg-pill);
+  border: none;
+  color: var(--text-secondary);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modal-close-btn:hover {
+  background: var(--bg-pill-active);
+  color: #FFFFFF;
+}
+
+/* Animations */
+.animate-in {
+  animation: fadeIn 0.4s var(--ease-smooth) both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: var(--space-xl) 0;
+  color: var(--text-tertiary);
+  font-size: 0.82rem;
+}
