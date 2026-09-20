@@ -7,7 +7,7 @@
 const RACE_DATE = new Date(2026, 9, 28); // Oct 28, 2026
 const PLAN_START = new Date(2026, 7, 13); // Aug 13, 2026
 const TODAY = new Date();
-const LAST_SYNC = '16/09/2026, 19:01';
+const LAST_SYNC = '20/09/2026, 11:19';
 
 // Workout type classification
 const WorkoutType = {
@@ -211,7 +211,7 @@ const trainingPlan = [
   // === Week 6 — Build / Recovery ===
   { week: 6, slot: 'quality', type: WorkoutType.QUALITY_TEMPO, distancePlanned: 7.0,
     targetPaceAvi: '5:40-5:50', targetPaceShachar: '5:25-5:35',
-    actualDistanceAvi: null, actualPaceAvi: null, actualDateAvi: null,
+    actualDistanceAvi: 7.02, actualPaceAvi: '6:20', actualDateAvi: '2026-09-17',
     actualDistanceShachar: 5.72, actualPaceShachar: '5:48', actualDateShachar: '2026-09-15',
     notes: 'שבוע שחרור חלקי' },
   { week: 6, slot: 'easy', type: WorkoutType.EASY, distancePlanned: 5.0,
