@@ -750,6 +750,8 @@ body {
 .status-badge.skipped { background: rgba(255,255,255,0.06); color: var(--text-tertiary); }
 .status-badge.exempt { background: var(--neon-purple-dim); color: var(--neon-purple); }
 .status-badge.illness { background: var(--neon-coral-dim); color: var(--neon-coral); }
+.status-badge.party { background: rgba(255, 159, 10, 0.15); color: #ff9f0a; border: 1px solid rgba(255, 159, 10, 0.35); }
+.status-badge.abroad { background: rgba(100, 210, 255, 0.15); color: #64d2ff; border: 1px solid rgba(100, 210, 255, 0.35); }
 .status-badge.pending { background: rgba(255,255,255,0.04); color: var(--text-muted); }
 
 .pace-cell {

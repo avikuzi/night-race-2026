@@ -732,6 +732,8 @@ function renderStatusBadge(status) {
     'skipped': { label: '— לא בוצע', class: 'skipped' },
     'exempt': { label: '🦷 עקירה כירורגית', class: 'exempt' },
     'illness': { label: '🤒 מחלה', class: 'illness' },
+    'party': { label: '🎉 מסיבה (42k)', class: 'party' },
+    'abroad': { label: '✈️ בחו"ל', class: 'abroad' },
     'pending': { label: '⏳ ממתין', class: 'pending' },
   };
   const s = map[status] || map['pending'];

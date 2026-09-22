@@ -7,7 +7,7 @@
 const RACE_DATE = new Date(2026, 9, 28); // Oct 28, 2026
 const PLAN_START = new Date(2026, 7, 13); // Aug 13, 2026
 const TODAY = new Date();
-const LAST_SYNC = '20/09/2026, 11:19';
+const LAST_SYNC = '22/09/2026, 18:40';
 
 // Workout type classification
 const WorkoutType = {
@@ -221,26 +221,31 @@ const trainingPlan = [
     notes: '' },
   { week: 6, slot: 'volume', type: WorkoutType.VOLUME, distancePlanned: 9.0,
     targetPaceAvi: '6:45-7:15', targetPaceShachar: '6:10-6:30',
+    statusAvi: 'party',
+    statusShachar: 'party',
     actualDistanceAvi: null, actualPaceAvi: null, actualDateAvi: null,
     actualDistanceShachar: null, actualPaceShachar: null, actualDateShachar: null,
-    notes: '' },
+    notes: 'אבי ושחר: ויתור נפח (מסיבת לילה + 42 אלף צעדים 🎉)' },
 
   // === Week 7 — Peak ===
   { week: 7, slot: 'quality', type: WorkoutType.QUALITY_INTERVALS, distancePlanned: 9.0,
     targetPaceAvi: '5:30-5:45', targetPaceShachar: '5:15-5:30',
-    actualDistanceAvi: null, actualPaceAvi: null, actualDateAvi: null,
+    actualDistanceAvi: 9.01, actualPaceAvi: '6:40', actualDateAvi: '2026-09-22',
+    statusShachar: 'abroad',
     actualDistanceShachar: null, actualPaceShachar: null, actualDateShachar: null,
-    notes: '5×1000מ' },
+    notes: 'אבי: 5×1000מ הושלם 💪 | שחר: בחו"ל ✈️' },
   { week: 7, slot: 'easy', type: WorkoutType.EASY, distancePlanned: 6.0,
     targetPaceAvi: '7:00-7:30', targetPaceShachar: '6:20-6:45',
+    statusShachar: 'abroad',
     actualDistanceAvi: null, actualPaceAvi: null, actualDateAvi: null,
     actualDistanceShachar: null, actualPaceShachar: null, actualDateShachar: null,
-    notes: '' },
+    notes: 'שחר: בחו"ל ✈️' },
   { week: 7, slot: 'volume', type: WorkoutType.VOLUME, distancePlanned: 12.0,
     targetPaceAvi: '6:40-7:10', targetPaceShachar: '6:00-6:25',
+    statusShachar: 'abroad',
     actualDistanceAvi: null, actualPaceAvi: null, actualDateAvi: null,
     actualDistanceShachar: null, actualPaceShachar: null, actualDateShachar: null,
-    notes: 'ריצת השיא' },
+    notes: 'אבי: ריצת שיא 12k | שחר: בחו"ל ✈️' },
 
   // === Week 8 — Peak ===
   { week: 8, slot: 'quality', type: WorkoutType.QUALITY_TEMPO, distancePlanned: 9.0,
@@ -514,21 +519,23 @@ function computeKPIs(filter) {
   let exemptAvi = 0, exemptShachar = 0;
   let kmAvi = 0, kmShachar = 0;
 
+  const isExcused = s => ['exempt', 'illness', 'party', 'abroad'].includes(s);
+
   pastWorkouts.forEach(w => {
-    if (w.statusAvi === 'exempt' || w.statusAvi === 'illness') exemptAvi++;
+    if (isExcused(w.statusAvi)) exemptAvi++;
     else if (w.actualDistanceAvi !== null) { completedAvi++; kmAvi += w.actualDistanceAvi; }
 
-    if (w.statusShachar === 'exempt' || w.statusShachar === 'illness') exemptShachar++;
+    if (isExcused(w.statusShachar)) exemptShachar++;
     else if (w.actualDistanceShachar !== null) { completedShachar++; kmShachar += w.actualDistanceShachar; }
   });
 
   // Also count current week completed workouts
   const currentWorkouts = trainingPlan.filter(w => w.week === currentWeek);
   currentWorkouts.forEach(w => {
-    if (w.statusAvi === 'exempt' || w.statusAvi === 'illness') exemptAvi++;
+    if (isExcused(w.statusAvi)) exemptAvi++;
     else if (w.actualDistanceAvi !== null) { completedAvi++; kmAvi += w.actualDistanceAvi; }
 
-    if (w.statusShachar === 'exempt' || w.statusShachar === 'illness') exemptShachar++;
+    if (isExcused(w.statusShachar)) exemptShachar++;
     else if (w.actualDistanceShachar !== null) { completedShachar++; kmShachar += w.actualDistanceShachar; }
   });
 
