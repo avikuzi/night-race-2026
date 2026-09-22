@@ -7,7 +7,7 @@
 const RACE_DATE = new Date(2026, 9, 28); // Oct 28, 2026
 const PLAN_START = new Date(2026, 7, 13); // Aug 13, 2026
 const TODAY = new Date();
-const LAST_SYNC = '22/09/2026, 18:43';
+const LAST_SYNC = '22/09/2026, 18:50';
 
 // Workout type classification
 const WorkoutType = {
@@ -242,10 +242,9 @@ const trainingPlan = [
     notes: 'שחר: בחו"ל ✈️' },
   { week: 7, slot: 'volume', type: WorkoutType.VOLUME, distancePlanned: 12.0,
     targetPaceAvi: '6:40-7:10', targetPaceShachar: '6:00-6:25',
-    statusShachar: 'abroad',
     actualDistanceAvi: null, actualPaceAvi: null, actualDateAvi: null,
     actualDistanceShachar: null, actualPaceShachar: null, actualDateShachar: null,
-    notes: 'אבי: ריצת שיא 12k | שחר: בחו"ל ✈️' },
+    notes: 'ריצת שיא 12k' },
 
   // === Week 8 — Peak ===
   { week: 8, slot: 'quality', type: WorkoutType.QUALITY_TEMPO, distancePlanned: 9.0,
