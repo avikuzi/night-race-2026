@@ -7,7 +7,7 @@
 const RACE_DATE = new Date(2026, 9, 28); // Oct 28, 2026
 const PLAN_START = new Date(2026, 7, 13); // Aug 13, 2026
 const TODAY = new Date();
-const LAST_SYNC = '22/09/2026, 18:40';
+const LAST_SYNC = '22/09/2026, 18:43';
 
 // Workout type classification
 const WorkoutType = {

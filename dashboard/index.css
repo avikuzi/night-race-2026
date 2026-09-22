@@ -85,8 +85,10 @@ body {
 
 /* App Container */
 .app-container {
-  max-width: 1200px;
+  max-width: 1480px;
+  width: 100%;
   margin: 0 auto;
+  padding: 0 var(--space-sm);
 }
 
 /* ============================================================
@@ -657,17 +659,34 @@ body {
   overflow-x: auto;
   margin-top: var(--space-md);
   scrollbar-width: thin;
+  scrollbar-color: var(--bg-pill-active) transparent;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-sm);
+}
+
+.table-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: var(--bg-pill-active);
+  border-radius: 3px;
 }
 
 .status-table {
   width: 100%;
+  min-width: 1050px;
   border-collapse: separate;
   border-spacing: 0 4px;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
 }
 
 .status-table thead th {
-  padding: 10px 12px;
+  padding: 8px 10px;
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -699,7 +718,7 @@ body {
 }
 
 .status-table td {
-  padding: 12px;
+  padding: 8px 10px;
   white-space: nowrap;
 }
 
