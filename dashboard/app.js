@@ -19,12 +19,81 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function renderAll() {
+  renderCoachSummary();
   renderKPIs();
   renderTimeline();
   renderPacingChart();
   renderVolumeChart();
   renderStatusTable();
   updateLastSyncDisplay();
+}
+
+function renderCoachSummary() {
+  const container = document.getElementById('coach-summary-section');
+  if (!container) return;
+
+  const showAvi = currentFilter !== 'shachar';
+  const showShachar = currentFilter !== 'avi';
+
+  let html = '';
+
+  if (showAvi) {
+    html += `
+      <div class="coach-card avi">
+        <div class="coach-card-header">
+          <div class="coach-card-title avi">
+            <span class="dot-indicator dot-avi"></span>
+            סיכום ביניים מאמן — אבי
+          </div>
+          <span class="coach-card-phase">כניסה לבלוק השיא · שבוע 7</span>
+        </div>
+        
+        <div class="coach-section">
+          <span class="coach-section-label" style="color:var(--neon-avi)">🎯 סטטוס נוכחי וביצוע:</span>
+          <p class="coach-section-text">
+            עקביות יוצאת מן הכלל (100% רצף אימונים). שיא נפח של <strong>11 ק"מ ב-6:38</strong>, והיום אינטרוולים חדים של <strong>5×1000מ (9 ק"מ ב-6:40)</strong>. הבסיס האירובי חזק ויציב.
+          </p>
+        </div>
+
+        <div class="coach-section" style="border-top:1px solid var(--bg-pill);padding-top:8px">
+          <span class="coach-section-label" style="color:var(--text-secondary)">⚡ במה להתמקד בשבועות 7–9:</span>
+          <p class="coach-section-text">
+            בניית עמידות שרירית לקצב היעד (<strong>6:05</strong>). המפתח להצלחה הוא נעילת ריצות הנפח בסופי השבוע של <strong>12 ו-13 ק"מ</strong>, והקפדה על ריצות התאוששות קלות באמת (7:15–7:40) ללא עומס יתר.
+          </p>
+        </div>
+      </div>
+    `;
+  }
+
+  if (showShachar) {
+    html += `
+      <div class="coach-card shachar">
+        <div class="coach-card-header">
+          <div class="coach-card-title shachar">
+            <span class="dot-indicator dot-shachar"></span>
+            סיכום ביניים מאמן — שחר
+          </div>
+          <span class="coach-card-phase">חזרה לעומס · שבוע 7</span>
+        </div>
+        
+        <div class="coach-section">
+          <span class="coach-section-label" style="color:var(--neon-shachar)">🎯 סטטוס נוכחי וביצוע:</span>
+          <p class="coach-section-text">
+            פוטנציאל מהירות טבעית גבוה במיוחד (<strong>טמפו 5:48, קלה 6:16</strong>). האתגר המרכזי עד כה הוא שמירה על רצף אימונים שנפגע ממחלה ונסיעות.
+          </p>
+        </div>
+
+        <div class="coach-section" style="border-top:1px solid var(--bg-pill);padding-top:8px">
+          <span class="coach-section-label" style="color:var(--text-secondary)">⚡ במה להתמקד בשבועות 7–9:</span>
+          <p class="coach-section-text">
+            בנייה מחדש של הנפח האירובי. לרוץ את הריצות הקלות במשמעת מלאה (<strong>6:20–6:45</strong>) בלי להתפתות להגביר, ולהתמיד בריצות הנפח הארוכות (10–13 ק"מ) לייצור סיבולת מספקת לקראת יעד המירוץ (<strong>5:45</strong>).
+          </p>
+        </div>
+      </div>
+    `;
+  }
+
+  container.innerHTML = html;
 }
 
 // ============================================================

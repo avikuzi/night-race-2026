@@ -297,6 +297,89 @@ body {
   margin-bottom: var(--space-lg);
 }
 
+/* Coaching Interim Summary Cards */
+.coach-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+@media (max-width: 840px) {
+  .coach-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.coach-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  position: relative;
+  overflow: hidden;
+  border-right: 4px solid transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.2s var(--ease-smooth);
+}
+
+.coach-card.avi {
+  border-right-color: var(--neon-avi);
+}
+
+.coach-card.shachar {
+  border-right-color: var(--neon-shachar);
+}
+
+.coach-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.coach-card-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.coach-card-title.avi { color: var(--neon-avi); }
+.coach-card-title.shachar { color: var(--neon-shachar); }
+
+.coach-card-phase {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background: var(--bg-pill);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.coach-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.coach-section-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+}
+
+.coach-section-text {
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
 @media (max-width: 1024px) {
   .kpi-grid {
     grid-template-columns: repeat(2, 1fr);
