@@ -45,20 +45,20 @@ function renderCoachSummary() {
             <span class="dot-indicator dot-avi"></span>
             סיכום ביניים מאמן — אבי
           </div>
-          <span class="coach-card-phase">כניסה לבלוק השיא · שבוע 7</span>
+          <span class="coach-card-phase">שבוע 7 הושלם במלואו · לקראת שבוע 8 (שיא הבלוק)</span>
         </div>
         
         <div class="coach-section">
-          <span class="coach-section-label" style="color:var(--neon-avi)">🎯 סטטוס נוכחי וביצוע:</span>
+          <span class="coach-section-label" style="color:var(--neon-avi)">🎯 סיכום שבוע 7 וסטטוס:</span>
           <p class="coach-section-text">
-            עקביות יוצאת מן הכלל (100% רצף אימונים). שיא נפח של <strong>11 ק"מ ב-6:38</strong>, והיום אינטרוולים חדים של <strong>5×1000מ (9 ק"מ ב-6:40)</strong>. הבסיס האירובי חזק ויציב.
+            שבוע מושלם עם <strong>27.04 ק"מ מצטברים</strong>! השלמת אינטרוולים חדים של 5×1000מ (9 ק"מ ב-6:40), ריצה קלה של 6 ק"מ, ושיא נפח חדש של <strong>12.02 ק"מ ב-6:52</strong>. המנוע האירובי והעקביות (100%) נמצאים ברמה אופטימלית לקראת המירוץ.
           </p>
         </div>
 
         <div class="coach-section" style="border-top:1px solid var(--bg-pill);padding-top:8px">
-          <span class="coach-section-label" style="color:var(--text-secondary)">⚡ במה להתמקד בשבועות 7–9:</span>
+          <span class="coach-section-label" style="color:var(--text-secondary)">⚡ תובנות ופוקוס לשבוע 8 (אימון הנפח הארוך ביותר):</span>
           <p class="coach-section-text">
-            בניית עמידות שרירית לקצב היעד (<strong>6:05</strong>). המפתח להצלחה הוא נעילת ריצות הנפח בסופי השבוע של <strong>12 ו-13 ק"מ</strong>, והקפדה על ריצות התאוששות קלות באמת (7:15–7:40) ללא עומס יתר.
+            שבוע 8 מציב את ריצת הנפח הארוכה ביותר בתוכנית כולה: <strong>13 ק"מ נפח + 35 דק' טמפו</strong>. הדגש המרכזי: התאוששות שרירית מלאה בימים הקרובים, פתיחה מבוקרת וסבלנית ב-13 ק"מ (6:45–7:05), וסיום חזק.
           </p>
         </div>
       </div>
@@ -73,20 +73,20 @@ function renderCoachSummary() {
             <span class="dot-indicator dot-shachar"></span>
             סיכום ביניים מאמן — שחר
           </div>
-          <span class="coach-card-phase">חזרה לעומס · שבוע 7</span>
+          <span class="coach-card-phase">חזרה מחו"ל · תוכנית חזרה לשבוע 8</span>
         </div>
         
         <div class="coach-section">
-          <span class="coach-section-label" style="color:var(--neon-shachar)">🎯 סטטוס נוכחי וביצוע:</span>
+          <span class="coach-section-label" style="color:var(--neon-shachar)">🎯 תמונת מצב שבוע 7:</span>
           <p class="coach-section-text">
-            פוטנציאל מהירות טבעית גבוה במיוחד (<strong>טמפו 5:48, קלה 6:16</strong>). האתגר המרכזי עד כה הוא שמירה על רצף אימונים שנפגע ממחלה ונסיעות.
+            חזרה לארץ לאחר היעדרות בשבוע 7. הרגליים צברו מנוחה, אך דורשות כניסה הדרגתית ומבוקרת חזרה לעומסי הריצה של בלוק השיא.
           </p>
         </div>
 
         <div class="coach-section" style="border-top:1px solid var(--bg-pill);padding-top:8px">
-          <span class="coach-section-label" style="color:var(--text-secondary)">⚡ במה להתמקד בשבועות 7–9:</span>
+          <span class="coach-section-label" style="color:var(--text-secondary)">⚡ תובנות ופוקוס לשבוע 8 (חזרה חכמה ללא עומס יתר):</span>
           <p class="coach-section-text">
-            בנייה מחדש של הנפח האירובי. לרוץ את הריצות הקלות במשמעת מלאה (<strong>6:20–6:45</strong>) בלי להתפתות להגביר, ולהתמיד בריצות הנפח הארוכות (10–13 ק"מ) לייצור סיבולת מספקת לקראת יעד המירוץ (<strong>5:45</strong>).
+            <strong>כלל ברזל:</strong> לא מנסים "לפצות" על אימוני שבוע 7 בבת אחת. פותחים את שבוע 8 בריצה קלה משוחררת (<strong>6:20–6:45</strong>), טמפו מבוקר, ומכוונים בסופ"ש לריצת נפח יציבה (10–12 ק"מ) כדי לייצב את העמידות ל-15 ק"מ (יעד <strong>5:45</strong>).
           </p>
         </div>
       </div>
